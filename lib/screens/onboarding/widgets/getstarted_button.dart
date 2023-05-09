@@ -14,20 +14,20 @@ class GetStartedButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        height: 42,
-        width: 220,
+        height: 40,
+        width: 190,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Colors.white,
-          border: Border.all(color: Palette.primary),
+          color: Palette.primary,
+          border: Border.all(color: Colors.transparent),
         ),
         child: const Center(
           child: Text(
             'Get Started',
             style: TextStyle(
                 color: Palette.white,
-                fontWeight: FontWeight.w400,
-                fontSize: 15),
+                fontWeight: FontWeight.w500,
+                fontSize: 15.5),
           ),
         ),
       ),

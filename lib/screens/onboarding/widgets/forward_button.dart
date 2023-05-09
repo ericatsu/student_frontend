@@ -20,19 +20,16 @@ class ForwardButton extends StatelessWidget {
         color: Palette.light,
         border: Border.all(color: Palette.light),
       ),
-      child: Material(
-        color: Palette.primary,
-        child: InkWell(
-          onTap: onPressed,
-          child: const Align(
-            alignment: Alignment.center,
-            child: Padding(
-              padding: EdgeInsets.all(8),
-              child: Icon(
-                CupertinoIcons.arrow_right,
-                color: Palette.primary,
-                size: 30,
-              ),
+      child: InkWell(
+        onTap: onPressed,
+        child: const Align(
+          alignment: Alignment.center,
+          child: Padding(
+            padding: EdgeInsets.all(8),
+            child: Icon(
+              CupertinoIcons.arrow_right,
+              color: Palette.primary,
+              size: 28,
             ),
           ),
         ),

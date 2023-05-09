@@ -35,7 +35,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
         body: Container(
       height: height,
       width: width,
-      color: currentIndex == 0 ? Palette.white : Palette.primary,
+      color: currentIndex == 1 ? Palette.white : Palette.backgrey,
       child: PageView.builder(
           controller: _controller,
           physics: const BouncingScrollPhysics(),
@@ -66,7 +66,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                   ),
                 ),
                 Container(
-                  color: currentIndex == 0 ? Palette.white : Palette.primary,
+                  color: Colors.transparent,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 30, horizontal: 30),
@@ -78,8 +78,8 @@ class _OnboardScreenState extends State<OnboardScreen> {
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               color: currentIndex == 0
-                                  ? Palette.primary
-                                  : Palette.white,
+                                  ? Colors.green
+                                  : Palette.secondary,
                               fontSize: 23.5),
                         ),
                         SizedBox(
@@ -91,12 +91,12 @@ class _OnboardScreenState extends State<OnboardScreen> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: currentIndex == 0
-                                  ? Palette.primary
-                                  : Palette.white,
+                                  ? Colors.green
+                                  : Palette.secondary,
                               fontSize: 14.5),
                         ),
                         SizedBox(
-                          height: height * 0.025,
+                          height: height * 0.028,
                         ),
                         onLastPage
                             ? GetStartedButton(
