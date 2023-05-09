@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class Palette {
   static const Color primary = Color(0xFFF97C44);
-    static const Color secondary = Color(0xFF5359E4);
+    static const Color secondary = Color(0xFF2F2D52);
   static const Color light = Color(0xFFF8AB9A);
   static const Color backgrey = Color(0xFFDADFE6);
   static const Color white = Colors.white;
@@ -17,6 +17,9 @@ class Images {
   static const String group = '${imagesPath}group.png';
   static const String online = '${imagesPath}online.png';
   static const String study = '${imagesPath}study.png';
+  static const String bg = '${imagesPath}bg.png';
+  static const String google = '${imagesPath}google.png';
+  static const String apple = '${imagesPath}apple.png';
 }
 
 // final List<String> keywords = [

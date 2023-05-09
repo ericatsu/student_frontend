@@ -118,7 +118,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                         onLastPage
                             ? GetStartedButton(
                                 onPressed: () {
-                                  Get.to(() => const HomePage());
+                                  Get.to(() => const SelectAuth());
                                 },
                               )
                             : ForwardButton(
