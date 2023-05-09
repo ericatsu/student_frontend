@@ -1,5 +1,6 @@
 //pub
 export 'package:get/get.dart';
+export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 //utils
 export 'package:student_frontend/shared/constants.dart';

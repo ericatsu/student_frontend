@@ -32,10 +32,10 @@ class _OnboardScreenState extends State<OnboardScreen> {
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return Scaffold(
-        body: Container(
+      body: Container(
       height: height,
       width: width,
-      color: currentIndex == 1 ? Palette.white : Palette.backgrey,
+      color: currentIndex == 1 ? Palette.white : const Color.fromARGB(255, 220, 223, 228),
       child: PageView.builder(
           controller: _controller,
           physics: const BouncingScrollPhysics(),
@@ -50,9 +50,11 @@ class _OnboardScreenState extends State<OnboardScreen> {
             return Column(
               children: [
                 Container(
-                  decoration: const BoxDecoration(
-                    color: Palette.white,
-                    borderRadius: BorderRadius.only(
+                  decoration:  BoxDecoration(
+                    color: currentIndex == 1
+                        ? Palette.light
+                        : Palette.white,
+                    borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(32),
                       bottomRight: Radius.circular(32),
                     ),
@@ -69,10 +71,25 @@ class _OnboardScreenState extends State<OnboardScreen> {
                   color: Colors.transparent,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 30, horizontal: 30),
+                        vertical: 20, horizontal: 30),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        SmoothPageIndicator(
+                          controller: _controller,
+                          count: 3,
+                          effect:  WormEffect(
+                            dotHeight: 4,
+                            dotWidth: 16,
+                            activeDotColor: currentIndex == 0
+                                ? Colors.green
+                                : Palette.secondary,
+                            type: WormType.thin,
+                          ),
+                        ),
+                        SizedBox(
+                          height: height * 0.04,
+                        ),
                         Text(
                           ondata[index].title,
                           style: TextStyle(
@@ -80,7 +97,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                               color: currentIndex == 0
                                   ? Colors.green
                                   : Palette.secondary,
-                              fontSize: 23.5),
+                              fontSize: 24),
                         ),
                         SizedBox(
                           height: height * 0.015,
@@ -93,10 +110,10 @@ class _OnboardScreenState extends State<OnboardScreen> {
                               color: currentIndex == 0
                                   ? Colors.green
                                   : Palette.secondary,
-                              fontSize: 14.5),
+                              fontSize: 15),
                         ),
                         SizedBox(
-                          height: height * 0.028,
+                          height: height * 0.040,
                         ),
                         onLastPage
                             ? GetStartedButton(
@@ -104,16 +121,19 @@ class _OnboardScreenState extends State<OnboardScreen> {
                                   Get.to(() => const HomePage());
                                 },
                               )
-                            : Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  ForwardButton(
-                                    onPressed: () {
-                                      _controller.jumpToPage(3);
-                                    },
-                                  ),
-                                ],
-                              ),
+                            : ForwardButton(
+                              onPressed: () {
+                                _controller.nextPage(
+                                      duration: const Duration(milliseconds: 400),
+                                      curve: Curves.easeIn);
+                              },
+                              backgroundColor: currentIndex == 0
+                                  ? const Color.fromARGB(255, 153, 255, 157)
+                                  : Palette.light,
+                              iconColor: currentIndex == 0
+                                  ? Colors.green
+                                  : Palette.primary,
+                            ),
                       ],
                     ),
                   ),
