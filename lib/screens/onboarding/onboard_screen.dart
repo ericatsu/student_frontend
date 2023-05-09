@@ -123,9 +123,11 @@ class _OnboardScreenState extends State<OnboardScreen> {
                               )
                             : ForwardButton(
                               onPressed: () {
-                                _controller.nextPage(
-                                      duration: const Duration(milliseconds: 400),
-                                      curve: Curves.easeIn);
+                                _controller.animateToPage(
+                                    index + 1,
+                                    duration: const Duration(milliseconds: 400),
+                                    curve: Curves.easeIn,
+                                  );
                               },
                               backgroundColor: currentIndex == 0
                                   ? const Color.fromARGB(255, 153, 255, 157)
