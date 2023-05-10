@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:student_frontend/screens/auth/widgets/or_divider.dart';
-import 'package:student_frontend/screens/auth/widgets/other_button.dart';
-import 'package:student_frontend/screens/auth/widgets/submit_button.dart';
 import 'package:student_frontend/shared/exports.dart';
 
 class SelectAuth extends StatelessWidget {
@@ -63,7 +60,7 @@ class SelectAuth extends StatelessWidget {
                 const SizedBox(height: 16),
                 SelectButton(
                   onPressed: () {
-                    _showLoginBottomSheet(context);
+                    Get.to(const SignInPage());
                   },
                   backgroundColor: Colors.white24,
                   text: "Log In",
@@ -74,120 +71,6 @@ class SelectAuth extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  void _showLoginBottomSheet(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-        ),
-      ),
-      builder: (BuildContext context) {
-        final double height = MediaQuery.of(context).size.height;
-        final double width = MediaQuery.of(context).size.width;
-        return SingleChildScrollView(
-          child: Container(
-            height: height * 0.7,
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text(
-                  "Welcome back",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-                SizedBox(height: height * 0.008),
-                const Text(
-                  "Enter your details below",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black54,
-                  ),
-                ),
-                SizedBox(height: height * 0.018),
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-                SizedBox(height: height * 0.018),
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  obscureText: true,
-                ),
-                SizedBox(height: height * 0.022),
-                SubmitButtom(
-                  backgroundColor: Palette.secondary,
-                  bheight: 0.075,
-                  bwidth: 0.92,
-                  onPressed: () {},
-                  text: 'Sign In',
-                  textColor: Palette.white,
-                ),
-                SizedBox(height: height * 0.022),
-                InkWell(
-                  onTap: () {},
-                  child: const Text(
-                    "Forgot your password?",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black54,
-                    ),
-                  ),
-                ),
-                SizedBox(height: height * 0.018),
-                const OrDivider(),
-                SizedBox(height: height * 0.010),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    OtherButton(
-                      onPressed: () {},
-                      ibheight: 0.080,
-                      ibwidth: 0.35,
-                      imagetext: Images.google,
-                      text: 'Google',
-                      textColor: Colors.black,
-                      icon: null, iheight: 35, iwidth: 35,
-                    ),
-                    const SizedBox(width: 10),
-                    OtherButton(
-                      onPressed: () {},
-                      ibheight: 0.080,
-                      ibwidth: 0.35,
-                      imagetext: Images.apple,
-                      text: 'Apple',
-                      textColor: Colors.black,
-                      icon: null, iheight: 22, iwidth: 22,
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
-        );
-      },
     );
   }
 }

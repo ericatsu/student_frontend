@@ -16,7 +16,7 @@ class SelectButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.of(context).size.height;
+    //final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return Container(
       height: 40,

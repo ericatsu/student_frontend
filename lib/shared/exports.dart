@@ -1,4 +1,6 @@
 //pub
+export 'package:flutter/cupertino.dart';
+
 export 'package:get/get.dart';
 export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -18,3 +20,8 @@ export 'package:student_frontend/screens/auth/signup_page.dart';
 export 'package:student_frontend/screens/onboarding/widgets/forward_button.dart';
 export 'package:student_frontend/screens/onboarding/widgets/getstarted_button.dart';
 export 'package:student_frontend/screens/auth/widgets/select_button.dart';
+export 'package:student_frontend/screens/auth/widgets/or_divider.dart';
+export 'package:student_frontend/screens/auth/widgets/other_button.dart';
+export 'package:student_frontend/screens/auth/widgets/submit_button.dart';
+export 'package:student_frontend/screens/auth/widgets/get_started.dart';
+export 'package:student_frontend/screens/auth/widgets/top_widget.dart';
