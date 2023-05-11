@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
 
 class OrDivider extends StatelessWidget {
-  const OrDivider({super.key});
+  final String ltext;
+  const OrDivider({super.key, required this.ltext});
 
   @override
   Widget build(BuildContext context) {
     return Row(
-            children: const [
-              Expanded(
+            children:  [
+              const Expanded(
                 child: Divider(
                   color: Colors.grey,
                   height: 1,
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  'Or sign in with',
-                  style: TextStyle(fontSize: 16),
+                  ltext,
+                  style: const TextStyle(fontSize: 14.5),
                 ),
               ),
-              Expanded(
+              const Expanded(
                 child: Divider(
                   color: Colors.grey,
                   height: 1,

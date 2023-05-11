@@ -19,7 +19,8 @@ class SignInPage extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const TopWidget(),
+             TopWidget(
+              ontapped: () { Get.to(const SignUpPage()); }, ttext: "Don't have an account?", btext: 'Get Started',),
             Container(
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -108,7 +109,7 @@ class SignInPage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: height * 0.018),
-                    const OrDivider(),
+                    const OrDivider(ltext: 'Or sign in with',),
                     SizedBox(height: height * 0.010),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
