@@ -151,11 +151,14 @@ class _SignUpPageState extends State<SignUpPage> {
                       onChanged: _checkPasswordStrength,
                     ),
                     SizedBox(height: height * 0.022),
+                    //Submit 
                     SubmitButtom(
                       backgroundColor: Palette.secondary,
                       bheight: 0.075,
                       bwidth: 0.92,
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(const HomePage());
+                      },
                       text: 'Sign Up',
                       textColor: Palette.white,
                     ),

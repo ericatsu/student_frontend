@@ -87,11 +87,15 @@ class SignInPage extends StatelessWidget {
                       obscureText: true,
                     ),
                     SizedBox(height: height * 0.022),
+
+                    //Submit button
                     SubmitButtom(
                       backgroundColor: Palette.secondary,
                       bheight: 0.075,
                       bwidth: 0.92,
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(const HomePage());
+                      },
                       text: 'Sign In',
                       textColor: Palette.white,
                     ),
