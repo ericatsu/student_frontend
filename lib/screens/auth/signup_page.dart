@@ -1,8 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:student_frontend/shared/exports.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  String password = '';
+  PasswordStrength strength = PasswordStrength.weak;
+
+  void _checkPasswordStrength(String value) {
+    setState(() {
+      password = value;
+      strength = _calculatePasswordStrength(value);
+    });
+  }
+
+  PasswordStrength _calculatePasswordStrength(String value) {
+    if (value.length < 6) {
+      return PasswordStrength.weak;
+    } else if (value.length < 10) {
+      return PasswordStrength.medium;
+    } else {
+      return PasswordStrength.strong;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +48,8 @@ class SignUpPage extends StatelessWidget {
               ontapped: () {
                 Get.to(const SignInPage());
               },
-              ttext: 'Already have an account?', btext: 'Sign In',
+              ttext: 'Already have an account?',
+              btext: 'Sign In',
             ),
             Container(
               decoration: const BoxDecoration(
@@ -89,17 +115,40 @@ class SignUpPage extends StatelessWidget {
                         labelText: 'Password',
                         contentPadding: const EdgeInsets.symmetric(
                             vertical: 6, horizontal: 14),
-                        suffixIcon: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              CupertinoIcons.eye,
-                              size: 18,
-                            )),
+                        suffixIcon: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SizedBox(
+                                width: 50,
+                                child: LinearProgressIndicator(
+                                  value: strength.index /
+                                      PasswordStrength.values.length,
+                                  backgroundColor: Colors.grey[300],
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    _getProgressColor(strength),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 7),
+                              Text(
+                                    strength.toString().split('.').last,
+                                style:  TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w500,
+                                  color: _getProgressColor(strength)
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
                       obscureText: true,
+                      onChanged: _checkPasswordStrength,
                     ),
                     SizedBox(height: height * 0.022),
                     SubmitButtom(
@@ -152,4 +201,21 @@ class SignUpPage extends StatelessWidget {
       ),
     );
   }
+
+  Color _getProgressColor(PasswordStrength strength) {
+    switch (strength) {
+      case PasswordStrength.weak:
+        return Colors.red;
+      case PasswordStrength.medium:
+        return Colors.orange;
+      case PasswordStrength.strong:
+        return Colors.green;
+    }
+  }
+}
+
+enum PasswordStrength {
+  weak,
+  medium,
+  strong,
 }
