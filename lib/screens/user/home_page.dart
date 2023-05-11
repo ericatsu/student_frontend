@@ -55,7 +55,7 @@ class HomePage extends StatelessWidget {
                   height: height * 0.02,
                 ),
                 SizedBox(
-                  height: height * 0.45,
+                  height: height * 0.4,
                   child: GridView.count(
                     crossAxisCount: 2,
                     childAspectRatio: 3 / 2,

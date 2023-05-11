@@ -7,6 +7,7 @@ export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 //utils
 export 'package:student_frontend/shared/constants.dart';
 export 'package:student_frontend/screens/onboarding/data.dart';
+export 'package:student_frontend/shared/nav_section.dart';
 
 
 //screens
@@ -15,6 +16,9 @@ export 'package:student_frontend/screens/onboarding/onboard_screen.dart';
 export 'package:student_frontend/screens/auth/select_auth.dart';
 export 'package:student_frontend/screens/auth/signin_page.dart';
 export 'package:student_frontend/screens/auth/signup_page.dart';
+
+export 'package:student_frontend/screens/user/all_students.dart';
+export 'package:student_frontend/screens/user/profile_page.dart';
 
 //widgets
 export 'package:student_frontend/screens/onboarding/widgets/forward_button.dart';

@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const GetMaterialApp(
       title: 'Student Info',
-      home: SelectAuth(),
+      home: NavSection(),
     );
   }
 }
