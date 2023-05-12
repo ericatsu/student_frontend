@@ -47,12 +47,12 @@ class _NavSectionState extends State<NavSection> {
                   borderRadius: BorderRadius.all(Radius.circular(15)),
                 ),
                 height: height * 0.06,
-                width: width * 0.7,
+                width: width * 0.72,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     navIcon(CupertinoIcons.square_on_circle, 0),
-                    navIcon(CupertinoIcons.profile_circled, 1),
+                    navIcon(CupertinoIcons.add_circled, 1),
                     navIcon(CupertinoIcons.group, 2),
                   ],
                 ),

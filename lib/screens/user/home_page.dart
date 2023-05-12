@@ -3,6 +3,7 @@ import 'package:student_frontend/screens/user/widgets/drawer_widget.dart';
 import 'package:student_frontend/screens/user/widgets/grid_cards.dart';
 import 'package:student_frontend/screens/user/widgets/home_top.dart';
 import 'package:student_frontend/screens/user/widgets/main_card.dart';
+import 'package:student_frontend/screens/user/widgets/share_widget.dart';
 import 'package:student_frontend/shared/exports.dart';
 
 class HomePage extends StatelessWidget {
@@ -35,53 +36,55 @@ class HomePage extends StatelessWidget {
             ),
           ),
           SafeArea(
-              child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: height * 0.1,
-                ),
-                const MainCard(
-                  email: 'johndoe@example.com',
-                  image:
-                      'https://cdn.pixabay.com/photo/2022/01/17/22/20/subtract-6945896_960_720.png',
-                  name: 'Eric Atsu',
-                  stdId: '10743340',
-                  stdage: 20,
-                ),
-                SizedBox(
-                  height: height * 0.02,
-                ),
-                SizedBox(
-                  height: height * 0.4,
-                  child: GridView.count(
-                    crossAxisCount: 2,
-                    childAspectRatio: 3 / 2,
-                    children: const [
-                      GridCard(
-                        icon: CupertinoIcons.book,
-                        text: 'Syllabus',
-                      ),
-                      GridCard(
-                        icon: CupertinoIcons.list_number,
-                        text: 'Attendance',
-                      ),
-                      GridCard(
-                        icon: CupertinoIcons.waveform,
-                        text: 'Activities',
-                      ),
-                      GridCard(
-                        icon: CupertinoIcons.doc_text_search,
-                        text: 'Result',
-                      ),
-                    ],
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: height * 0.1,
                   ),
-                )
-              ],
+                  const MainCard(
+                    email: 'johndoe@example.com',
+                    image:
+                        'https://cdn.pixabay.com/photo/2022/01/17/22/20/subtract-6945896_960_720.png',
+                    name: 'Eric Atsu',
+                    stdId: '10743340',
+                    stdage: 20,
+                  ),
+                  SizedBox(
+                    height: height * 0.02,
+                  ),
+                  SizedBox(
+                    height: height * 0.36,
+                    child: GridView.count(
+                      crossAxisCount: 2,
+                      childAspectRatio: 3 / 2,
+                      children: const [
+                        GridCard(
+                          icon: CupertinoIcons.book,
+                          text: 'Syllabus',
+                        ),
+                        GridCard(
+                          icon: CupertinoIcons.list_number,
+                          text: 'Attendance',
+                        ),
+                        GridCard(
+                          icon: CupertinoIcons.waveform,
+                          text: 'Activities',
+                        ),
+                        GridCard(
+                          icon: CupertinoIcons.doc_text_search,
+                          text: 'Result',
+                        ),
+                      ],
+                    ),
+                  ),
+                  const ShareWidget(),
+                ],
+              ),
             ),
-          ))
+          ),
         ],
       ),
     );

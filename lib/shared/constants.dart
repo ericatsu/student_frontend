@@ -20,6 +20,11 @@ class Images {
   static const String bg = '${imagesPath}bg.png';
   static const String google = '${imagesPath}google.png';
   static const String apple = '${imagesPath}apple.png';
+  static const String whatsapp = '${imagesPath}whatsapp.png';
+  static const String snapchat = '${imagesPath}snapchat.png';
+  static const String twitter = '${imagesPath}twitter.png';
+  static const String text = '${imagesPath}text.png';
+  static const String linkedIn = '${imagesPath}linkedin.png';
 }
 
 // final List<String> keywords = [
