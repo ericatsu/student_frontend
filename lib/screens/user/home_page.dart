@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:student_frontend/screens/user/widgets/drawer_widget.dart';
-import 'package:student_frontend/screens/user/widgets/grid_cards.dart';
-import 'package:student_frontend/screens/user/widgets/home_top.dart';
-import 'package:student_frontend/screens/user/widgets/main_card.dart';
-import 'package:student_frontend/screens/user/widgets/share_widget.dart';
 import 'package:student_frontend/shared/exports.dart';
 
 class HomePage extends StatelessWidget {

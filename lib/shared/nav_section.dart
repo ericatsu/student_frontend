@@ -13,7 +13,7 @@ class _NavSectionState extends State<NavSection> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    const ProfilePage(),
+    const CreatePage(),
     const AllStudents(),
   ];
 
