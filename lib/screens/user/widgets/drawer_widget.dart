@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:student_frontend/shared/exports.dart';
+//import 'package:student_frontend/shared/exports.dart';
 
 class DrawerWidget extends StatelessWidget {
-  DrawerWidget({Key? key}) : super(key: key);
+  const DrawerWidget({Key? key}) : super(key: key);
   //final user = FirebaseAuth.instance.currentUser!;
 
   @override
@@ -91,18 +91,18 @@ class DrawerWidget extends StatelessWidget {
   }
 
   Widget profileWidget() {
-    return Row(
+    return const Row(
       children: [
-        const CircleAvatar(
+        CircleAvatar(
           radius: 20,
           backgroundImage: AssetImage("assets/images/splash.png"),
         ),
-        const SizedBox(
+        SizedBox(
           width: 20,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             Text('Eric Atsu',
                 style: TextStyle(fontSize: 14, color: Color(0xFF0B3C5D))),
             SizedBox(

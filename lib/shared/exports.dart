@@ -35,3 +35,6 @@ export 'package:student_frontend/screens/user/widgets/home_top.dart';
 export 'package:student_frontend/screens/user/widgets/main_card.dart';
 export 'package:student_frontend/screens/user/widgets/share_widget.dart';
 export 'package:student_frontend/screens/user/widgets/update_top.dart';
+
+export 'package:student_frontend/screens/user/widgets/profile_card.dart';
+export 'package:student_frontend/screens/user/widgets/searchbar_widget.dart';

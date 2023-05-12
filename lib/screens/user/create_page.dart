@@ -16,7 +16,7 @@ class _CreatePageState extends State<CreatePage> {
     //final double width = MediaQuery.of(context).size.width;
     return  SafeArea(
       child: Scaffold(
-        drawer: DrawerWidget(),
+        drawer: const DrawerWidget(),
          body: Stack(
           children: [
             Container(

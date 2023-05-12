@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
     final double height = MediaQuery.of(context).size.height;
     //final double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      drawer: DrawerWidget(),
+      drawer: const DrawerWidget(),
       body: Stack(
         alignment: AlignmentDirectional.topCenter,
         children: [
@@ -55,22 +55,25 @@ class HomePage extends StatelessWidget {
                     child: GridView.count(
                       crossAxisCount: 2,
                       childAspectRatio: 3 / 2,
-                      children: const [
+                      children:  [
                         GridCard(
                           icon: CupertinoIcons.book,
-                          text: 'Syllabus',
+                          text: 'Syllabus', onTap: () {  },
                         ),
                         GridCard(
                           icon: CupertinoIcons.list_number,
                           text: 'Attendance',
+                          onTap: () {},
                         ),
                         GridCard(
                           icon: CupertinoIcons.waveform,
                           text: 'Activities',
+                          onTap: () {},
                         ),
                         GridCard(
                           icon: CupertinoIcons.doc_text_search,
                           text: 'Result',
+                          onTap: () {},
                         ),
                       ],
                     ),
