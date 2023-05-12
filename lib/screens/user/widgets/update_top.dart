@@ -41,11 +41,11 @@ class UpdateTop extends StatelessWidget {
                   color: Colors.white24,
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Center(
+                child: const Center(
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: const [
+                    children: [
                       Text(
                         "Update",
                         style: TextStyle(

@@ -10,7 +10,7 @@ class HomeTop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.of(context).size.height;
+    //final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 6),
