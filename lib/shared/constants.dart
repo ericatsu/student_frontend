@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-// const url =
-//     'https://evermates-icons-screens.herokuapp.com/search/icons-and-screens/864777249743';
-// final headers = {'x-api-key': '870a13-fe2fyT-L3sha9-iPda0d'};
+const url =
+    'https://studentapi-production.up.railway.app/api/v1/student';
+//final headers = {'x-api-key': '870a13-fe2fyT-L3sha9-iPda0d'};
 
 class Palette {
   static const Color primary = Color(0xFFF97C44);

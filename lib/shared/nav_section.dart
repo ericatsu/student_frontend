@@ -12,7 +12,7 @@ class _NavSectionState extends State<NavSection> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    const HomePage(),
+     //HomePage(),
     const CreatePage(),
     const AllStudents(),
   ];
@@ -51,9 +51,9 @@ class _NavSectionState extends State<NavSection> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    navIcon(CupertinoIcons.square_on_circle, 0),
-                    navIcon(CupertinoIcons.add_circled, 1),
-                    navIcon(CupertinoIcons.group, 2),
+                    //navIcon(CupertinoIcons.square_on_circle, 0),
+                    navIcon(CupertinoIcons.add_circled, 0),
+                    navIcon(CupertinoIcons.group, 1),
                   ],
                 ),
               ),

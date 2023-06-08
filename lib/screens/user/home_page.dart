@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:student_frontend/shared/exports.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  final String name;
+  final String email;
+  final int age;
+  const HomePage(
+      {super.key, required this.name, required this.email, required this.age});
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +43,13 @@ class HomePage extends StatelessWidget {
                   SizedBox(
                     height: height * 0.1,
                   ),
-                  const MainCard(
-                    email: 'johndoe@example.com',
+                  MainCard(
+                    email: email,
                     image:
                         'https://cdn.pixabay.com/photo/2022/01/17/22/20/subtract-6945896_960_720.png',
-                    name: 'Eric Atsu',
+                    name: name,
                     stdId: '10743340',
-                    stdage: 20,
+                    stdage: age,
                   ),
                   SizedBox(
                     height: height * 0.02,
@@ -55,10 +59,11 @@ class HomePage extends StatelessWidget {
                     child: GridView.count(
                       crossAxisCount: 2,
                       childAspectRatio: 3 / 2,
-                      children:  [
+                      children: [
                         GridCard(
                           icon: CupertinoIcons.book,
-                          text: 'Syllabus', onTap: () {  },
+                          text: 'Syllabus',
+                          onTap: () {},
                         ),
                         GridCard(
                           icon: CupertinoIcons.list_number,

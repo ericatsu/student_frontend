@@ -94,7 +94,7 @@ class SignInPage extends StatelessWidget {
                       bheight: 0.075,
                       bwidth: 0.92,
                       onPressed: () {
-                        Get.to(const HomePage());
+                        //Get.to(const HomePage());
                       },
                       text: 'Sign In',
                       textColor: Palette.white,

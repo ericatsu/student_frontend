@@ -157,7 +157,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       bheight: 0.075,
                       bwidth: 0.92,
                       onPressed: () {
-                        Get.to(const HomePage());
+                        //Get.to(const HomePage());
                       },
                       text: 'Sign Up',
                       textColor: Palette.white,
