@@ -10,7 +10,7 @@ export 'package:student_frontend/shared/nav_section.dart';
 
 
 //screens
-export 'package:student_frontend/screens/user/home_page.dart';
+export 'package:student_frontend/screens/user/student_page.dart';
 export 'package:student_frontend/screens/onboarding/onboard_screen.dart';
 export 'package:student_frontend/screens/auth/select_auth.dart';
 export 'package:student_frontend/screens/auth/signin_page.dart';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:student_frontend/screens/user/student_count.dart';
 import 'package:student_frontend/shared/exports.dart';
 
 class NavSection extends StatefulWidget {
@@ -12,9 +13,9 @@ class _NavSectionState extends State<NavSection> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-     //HomePage(),
-    const CreatePage(),
     const AllStudents(),
+    const CreatePage(),
+    const StudentCount(),
   ];
 
   @override
@@ -51,9 +52,9 @@ class _NavSectionState extends State<NavSection> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    //navIcon(CupertinoIcons.square_on_circle, 0),
-                    navIcon(CupertinoIcons.add_circled, 0),
-                    navIcon(CupertinoIcons.group, 1),
+                    navIcon(CupertinoIcons.group, 0),
+                    navIcon(CupertinoIcons.add_circled, 1),
+                    navIcon(CupertinoIcons.square_on_circle, 2),
                   ],
                 ),
               ),

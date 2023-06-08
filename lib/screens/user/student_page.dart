@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:student_frontend/shared/exports.dart';
 
-class HomePage extends StatelessWidget {
+class StudentPage extends StatelessWidget {
   final String name;
   final String email;
   final int age;
-  const HomePage(
+  const StudentPage(
       {super.key, required this.name, required this.email, required this.age});
 
   @override

@@ -94,7 +94,7 @@ class _AllStudentsState extends State<AllStudents> {
                         age: student.age,
                         imageUrl: 'https://cdn.pixabay.com/photo/2022/01/17/22/20/subtract-6945896_960_720.png',
                         ontap: () {
-                          Get.to( HomePage(
+                          Get.to( StudentPage(
                                 name: student.name,
                                 email: student.email,
                                 age: student.age,
