@@ -1,4 +1,5 @@
 //pub
+export 'package:student_frontend/model/student_model.dart';
 export 'package:flutter/cupertino.dart';
 export 'package:get/get.dart';
 export 'package:smooth_page_indicator/smooth_page_indicator.dart';

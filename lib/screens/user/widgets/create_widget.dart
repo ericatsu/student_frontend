@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:student_frontend/shared/exports.dart';
 
 class CreateWidget extends StatefulWidget {
@@ -11,6 +13,8 @@ class CreateWidget extends StatefulWidget {
 
 class _CreateWidgetState extends State<CreateWidget> {
   final TextEditingController _dateOfBirthController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final DateFormat _dateFormat = DateFormat('dd-MM-yyyy');
 
   @override
@@ -18,6 +22,29 @@ class _CreateWidgetState extends State<CreateWidget> {
     _dateOfBirthController.dispose();
     super.dispose();
   }
+
+ void createStudent(String name, String email, String dob) async {
+    Map<String, dynamic> studentData = {
+      'name': name,
+      'email': email,
+      'dob': dob,
+    };
+
+    var response = await http.post(Uri.parse(url), body: studentData);
+
+    if (response.statusCode == 201) {
+      // Successful response
+      var createdStudent = jsonDecode(response.body);
+
+      // Process the created student data
+
+      // ...
+    } else {
+      // Error handling
+      print('Failed to create student. Error code: ${response.statusCode}');
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +73,9 @@ class _CreateWidgetState extends State<CreateWidget> {
                   ),
                   IconButton(
                     onPressed: () {
-                      // Clear button action
+                      _nameController.clear();
+                      _emailController.clear();
+                      _dateOfBirthController.clear();
                     },
                     icon: const Icon(Icons.clear),
                   ),
@@ -135,6 +164,7 @@ class _CreateWidgetState extends State<CreateWidget> {
                                     const BorderSide(color: Colors.black),
                               ),
                             ),
+                            controller: _nameController,
                           ),
                         ),
                       ],
@@ -170,6 +200,7 @@ class _CreateWidgetState extends State<CreateWidget> {
                                     const BorderSide(color: Colors.black),
                               ),
                             ),
+                            controller: _nameController,
                           ),
                         ),
                       ],
@@ -211,7 +242,9 @@ class _CreateWidgetState extends State<CreateWidget> {
                             borderSide: const BorderSide(color: Colors.black),
                           ),
                         ),
+                        controller: _emailController,
                       ),
+                      
                     ),
                   ],
                 ),
@@ -274,8 +307,8 @@ class _CreateWidgetState extends State<CreateWidget> {
                   ],
                 ),
               ),
-            
-            SizedBox(
+
+              SizedBox(
                 height: height * 0.026,
               ),
 
@@ -285,7 +318,13 @@ class _CreateWidgetState extends State<CreateWidget> {
                 bheight: 0.075,
                 bwidth: 0.78,
                 onPressed: () {
-                  
+                  // Retrieve input values from text fields
+                  String name = _nameController.text;
+                  String email = _emailController.text;
+                  String dob = _dateOfBirthController.text;
+
+                  // Call createStudent method to add the student to the API
+                  createStudent(name, email, dob);
                 },
                 text: 'Submit Student',
                 textColor: Palette.white,
@@ -301,3 +340,4 @@ class _CreateWidgetState extends State<CreateWidget> {
     );
   }
 }
+

@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:student_frontend/model/student_model.dart';
 import 'package:student_frontend/shared/exports.dart';
 
 class AllStudents extends StatefulWidget {
