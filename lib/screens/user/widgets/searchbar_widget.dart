@@ -24,7 +24,7 @@ class SearchBarWidget extends StatelessWidget {
             onSubmitted: onSubmitted,
             autofocus: true,
             itemColor: Colors.black,
-            itemSize: 24,
+            itemSize: 18,
             placeholder: "Search Students here",
             backgroundColor: const Color.fromARGB(255, 239, 239, 240),
             placeholderStyle: const TextStyle(

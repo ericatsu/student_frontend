@@ -13,7 +13,7 @@ class HomeTop extends StatelessWidget {
     //final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 21, vertical: 10),
       child: Align(
         alignment: Alignment.topCenter,
         child: Row(
@@ -25,7 +25,7 @@ class HomeTop extends StatelessWidget {
               },
               child: const Icon(
                 CupertinoIcons.line_horizontal_3_decrease,
-                size: 25,
+                size: 20,
                 color: Palette.white,
               ),
             ),
@@ -35,18 +35,18 @@ class HomeTop extends StatelessWidget {
             const Text(
               "STUDENTS",
               style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 16.5,
                   color: Colors.white,
                   fontWeight: FontWeight.w500),
             ),
             SizedBox(
-              width: width * 0.37,
+              width: width * 0.42,
             ),
             IconButton(
               onPressed: ontapped,
               icon: const Icon(
                 CupertinoIcons.bell,
-                size: 25,
+                size: 20,
                 color: Palette.white,
               ),
             )
