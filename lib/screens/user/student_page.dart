@@ -13,12 +13,13 @@ class StudentPage extends StatelessWidget {
     final double height = MediaQuery.of(context).size.height;
     //final double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      drawer: const DrawerWidget(),
+      // drawer: const DrawerWidget(),
       body: Stack(
         alignment: AlignmentDirectional.topCenter,
         children: [
           Container(
             height: height * 0.26,
+            width: double.infinity,
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [Palette.secondary, Color.fromARGB(255, 117, 115, 141)],
@@ -30,8 +31,16 @@ class StudentPage extends StatelessWidget {
                 bottomRight: Radius.circular(25),
               ),
             ),
-            child: HomeTop(
-              ontapped: () {},
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 6),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: IconButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: const Icon(CupertinoIcons.back, color: Colors.white,)),
+              ),
             ),
           ),
           SafeArea(

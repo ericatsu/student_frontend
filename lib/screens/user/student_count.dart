@@ -72,7 +72,7 @@ class StudentCountWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
         color: Colors.blue,
         borderRadius: BorderRadius.circular(20),
@@ -80,14 +80,14 @@ class StudentCountWidget extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
+          const Icon(
             Icons.people,
             color: Colors.white,
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           Text(
             'Total Students: $studentCount',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),

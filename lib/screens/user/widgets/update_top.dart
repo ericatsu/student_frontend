@@ -13,7 +13,7 @@ class UpdateTop extends StatelessWidget {
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
       child: Align(
         alignment: Alignment.topCenter,
         child: Row(

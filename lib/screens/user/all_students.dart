@@ -44,6 +44,7 @@ class _AllStudentsState extends State<AllStudents> {
     final double height = MediaQuery.of(context).size.height;
     //final double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      drawer: const DrawerWidget(),
       body: Stack(
         children: [
           Container(

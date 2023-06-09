@@ -13,7 +13,7 @@ class HomeTop extends StatelessWidget {
     //final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       child: Align(
         alignment: Alignment.topCenter,
         child: Row(
@@ -33,7 +33,7 @@ class HomeTop extends StatelessWidget {
               width: width * 0.04,
             ),
             const Text(
-              "DASHBOARD",
+              "STUDENTS",
               style: TextStyle(
                   fontSize: 18,
                   color: Colors.white,
