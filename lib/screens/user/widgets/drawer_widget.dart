@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-//import 'package:student_frontend/shared/exports.dart';
+import 'package:student_frontend/shared/exports.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({Key? key}) : super(key: key);
-  //final user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +10,7 @@ class DrawerWidget extends StatelessWidget {
       child: Material(
         color: Colors.white70,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(24.0, 80, 24, 0),
+          padding: const EdgeInsets.fromLTRB(24.0, 50, 20, 0),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -25,23 +24,23 @@ class DrawerWidget extends StatelessWidget {
                   color: Colors.black,
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 15,
                 ),
                 DrawerModel(
-                  name: 'Profie',
-                  icon: Icons.account_box_rounded,
+                  name: 'Students',
+                  icon: CupertinoIcons.suit_spade,
                   onPressed: () {},
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 15,
                 ),
                 DrawerModel(
-                  name: 'Requests',
-                  icon: Icons.send_outlined,
+                  name: 'School',
+                  icon: CupertinoIcons.ant,
                   onPressed: () {},
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 15,
                 ),
                 DrawerModel(
                   name: 'Organization',
@@ -49,11 +48,11 @@ class DrawerWidget extends StatelessWidget {
                   onPressed: () {},
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 15,
                 ),
                 DrawerModel(
                   name: 'Feedbacks',
-                  icon: Icons.message_outlined,
+                  icon: CupertinoIcons.waveform,
                   onPressed: () {},
                 ),
                 const SizedBox(
@@ -65,15 +64,15 @@ class DrawerWidget extends StatelessWidget {
                   color: Colors.black,
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 10,
                 ),
                 DrawerModel(
                   name: 'Setting',
-                  icon: Icons.settings,
+                  icon: CupertinoIcons.settings,
                   onPressed: () {},
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 10,
                 ),
                 DrawerModel(
                   name: 'Log out',
@@ -94,11 +93,12 @@ class DrawerWidget extends StatelessWidget {
     return const Row(
       children: [
         CircleAvatar(
-          radius: 20,
-          backgroundImage: AssetImage("assets/images/splash.png"),
+          radius: 28,
+          backgroundImage: NetworkImage(
+              "https://cdn.pixabay.com/photo/2022/01/17/22/20/subtract-6945896_960_720.png"),
         ),
         SizedBox(
-          width: 20,
+          width: 12,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,17 +106,15 @@ class DrawerWidget extends StatelessWidget {
             Text('Eric Atsu',
                 style: TextStyle(fontSize: 14, color: Color(0xFF0B3C5D))),
             SizedBox(
-              height: 10,
+              height: 8,
             ),
-            Text("user.email!",
-                style: TextStyle(fontSize: 14, color: Color(0xFF0B3C5D)))
+            Text("user.email",
+                style: TextStyle(fontSize: 13, color: Color(0xFF0B3C5D)))
           ],
         )
       ],
     );
   }
-
-
 }
 
 class DrawerModel extends StatelessWidget {
@@ -136,7 +134,7 @@ class DrawerModel extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: SizedBox(
-        height: 40,
+        height: 30,
         child: Row(
           children: [
             Icon(
@@ -145,11 +143,11 @@ class DrawerModel extends StatelessWidget {
               color: const Color(0xFF0B3C5D),
             ),
             const SizedBox(
-              width: 40,
+              width: 20,
             ),
             Text(
               name,
-              style: const TextStyle(fontSize: 20, color: Color(0xFF0B3C5D)),
+              style: const TextStyle(fontSize: 15, color: Color(0xFF0B3C5D)),
             )
           ],
         ),
