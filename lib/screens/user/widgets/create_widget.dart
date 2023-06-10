@@ -23,14 +23,19 @@ class _CreateWidgetState extends State<CreateWidget> {
     super.dispose();
   }
 
- void createStudent(String name, String email, String dob) async {
+  void createStudent(String name, String email, String dob) async {
     Map<String, dynamic> studentData = {
       'name': name,
       'email': email,
       'dob': dob,
     };
 
-    var response = await http.post(Uri.parse(url), body: studentData);
+    var headers = {
+      'Content-Type': 'application/json',
+    };
+
+    var response =
+        await http.post(Uri.parse(url), headers: headers, body: jsonEncode(studentData));
 
     if (response.statusCode == 201) {
       // Successful response
@@ -44,7 +49,6 @@ class _CreateWidgetState extends State<CreateWidget> {
       print('Failed to create student. Error code: ${response.statusCode}');
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -244,7 +248,6 @@ class _CreateWidgetState extends State<CreateWidget> {
                         ),
                         controller: _emailController,
                       ),
-                      
                     ),
                   ],
                 ),
@@ -340,4 +343,3 @@ class _CreateWidgetState extends State<CreateWidget> {
     );
   }
 }
-
