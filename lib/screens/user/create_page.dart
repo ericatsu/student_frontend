@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:http/http.dart' as http;
 import 'package:student_frontend/shared/exports.dart';
 
 class CreatePage extends StatefulWidget {
-  const CreatePage({super.key});
+  const CreatePage({
+    super.key,
+  });
+  
 
   @override
   State<CreatePage> createState() => _CreatePageState();
 }
 
 class _CreatePageState extends State<CreatePage> {
+
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
-    //final double width = MediaQuery.of(context).size.width;
-    return  Scaffold(
+    return Scaffold(
       drawer: const DrawerWidget(),
-       body: Stack(
+      body: Stack(
         children: [
           Container(
             height: height * 0.26,
@@ -31,12 +35,15 @@ class _CreatePageState extends State<CreatePage> {
                 bottomRight: Radius.circular(25),
               ),
             ),
-            child: UpdateTop(ontapped: () { 
-               String userId = "123"; // Replace with the actual user ID
-                _showUserInfoDialog(context, userId);
-             },),
+            child: UpdateTop(
+              ontapped: () {
+                int studentId = 1;
+                _showUserInfoDialog(context, studentId);
+              },
+            ),
           ),
-          SafeArea(child: Column(
+          SafeArea(
+              child: Column(
             children: [
               SizedBox(
                 height: height * 0.1,
@@ -45,27 +52,16 @@ class _CreatePageState extends State<CreatePage> {
             ],
           ))
         ],
-       ),
+      ),
     );
   }
 
-  void _showUserInfoDialog(BuildContext context, String userId) {
-    // Simulating loading user information based on the provided userId
-    String firstName = "John";
-    String lastName = "Doe";
-    String email = "eric@gmail.com";
-    DateTime dateOfBirth = DateTime(1990, 1, 1);
-
+  void _showUserInfoDialog(BuildContext context, int studentId) {
     // Text editing controllers for user information
-    TextEditingController firstNameController =
-        TextEditingController(text: firstName);
-    TextEditingController lastNameController =
-        TextEditingController(text: lastName);
-        TextEditingController emailController =
-        TextEditingController(text: email);
-    TextEditingController dateOfBirthController = TextEditingController(
-      text: DateFormat('dd-MM-yyyy').format(dateOfBirth),
-    );
+    TextEditingController idController = TextEditingController();
+    TextEditingController nameController = TextEditingController();
+    TextEditingController emailController = TextEditingController();
+    TextEditingController dateOfBirthController = TextEditingController();
 
     showDialog(
       context: context,
@@ -73,7 +69,7 @@ class _CreatePageState extends State<CreatePage> {
         final double height = MediaQuery.of(context).size.height;
         final double width = MediaQuery.of(context).size.width;
         return AlertDialog(
-          title: const Text("Edit User Information"),
+          title: const Text("Edit Student Information"),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -85,7 +81,7 @@ class _CreatePageState extends State<CreatePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      "First Name",
+                      "Student ID",
                       style: TextStyle(
                           color: Color.fromARGB(255, 122, 124, 126),
                           fontSize: 14),
@@ -106,7 +102,7 @@ class _CreatePageState extends State<CreatePage> {
                             borderSide: const BorderSide(color: Colors.black),
                           ),
                         ),
-                        controller: firstNameController,
+                        controller: idController,
                       ),
                     ),
                   ],
@@ -120,7 +116,7 @@ class _CreatePageState extends State<CreatePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      "Last Name",
+                      "Student Name",
                       style: TextStyle(
                           color: Color.fromARGB(255, 122, 124, 126),
                           fontSize: 14),
@@ -141,7 +137,7 @@ class _CreatePageState extends State<CreatePage> {
                             borderSide: const BorderSide(color: Colors.black),
                           ),
                         ),
-                        controller: lastNameController,
+                        controller: nameController,
                       ),
                     ),
                   ],
@@ -178,7 +174,6 @@ class _CreatePageState extends State<CreatePage> {
                         ),
                         controller: emailController,
                       ),
-                      
                     ),
                   ],
                 ),
@@ -226,13 +221,42 @@ class _CreatePageState extends State<CreatePage> {
           ),
           actions: [
             ElevatedButton(
-              onPressed: () {
-                // Save the updated user information
-                // String updatedFirstName = firstNameController.text;
-                // String updatedLastName = lastNameController.text;
-                // String updatedDateOfBirth = dateOfBirthController.text;
-                //  String updatedEmail = emailController.text;
-                // Perform the necessary operations with the updated data
+              onPressed: () async {
+                // Prepare the updated data
+                String updatedName = nameController.text;
+                String updatedEmail = emailController.text;
+                String updatedDateOfBirth = dateOfBirthController.text;
+
+                // Prepare the API URL with the provided studentId
+                String apiUrl =
+                    'https://studentapi-production.up.railway.app/api/v1/student/$studentId';
+
+                // Prepare the request body
+                Map<String, String> requestBody = {
+                  'name': updatedName,
+                  'email': updatedEmail,
+                  'dateOfBirth': updatedDateOfBirth,
+                };
+
+                // Send the PUT request to update the student's information
+                try {
+                  final response = await http.put(
+                    Uri.parse(apiUrl),
+                    body: requestBody,
+                  );
+
+                  if (response.statusCode == 200) {
+                    // Success! Handle the updated information
+                    // ...
+                  } else {
+                    // Error handling
+                    print(
+                        'Failed to update student information. Status code: ${response.statusCode}');
+                  }
+                } catch (error) {
+                  // Error handling
+                  print('Failed to update student information. Error: $error');
+                }
 
                 // Close the dialog
                 Navigator.pop(dialogContext);

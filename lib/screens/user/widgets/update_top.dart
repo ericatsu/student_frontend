@@ -21,7 +21,7 @@ class UpdateTop extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                Scaffold.of(context).openDrawer();
+                //Scaffold.of(context).openDrawer();
               },
               child: const Icon(
                 CupertinoIcons.line_horizontal_3_decrease,

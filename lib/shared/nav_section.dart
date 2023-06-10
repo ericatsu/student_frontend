@@ -3,7 +3,8 @@ import 'package:student_frontend/screens/user/student_count.dart';
 import 'package:student_frontend/shared/exports.dart';
 
 class NavSection extends StatefulWidget {
-  const NavSection({super.key});
+
+  const NavSection({super.key,});
 
   @override
   State<NavSection> createState() => _NavSectionState();
@@ -17,6 +18,7 @@ class _NavSectionState extends State<NavSection> {
     const CreatePage(),
     const StudentCount(),
   ];
+  
 
   @override
   Widget build(BuildContext context) {
