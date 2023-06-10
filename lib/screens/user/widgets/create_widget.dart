@@ -15,7 +15,7 @@ class _CreateWidgetState extends State<CreateWidget> {
   final TextEditingController _dateOfBirthController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-  final DateFormat _dateFormat = DateFormat('dd-MM-yyyy');
+  final DateFormat _dateFormat = DateFormat('yyyy-MM-dd');
 
   @override
   void dispose() {
@@ -23,27 +23,24 @@ class _CreateWidgetState extends State<CreateWidget> {
     super.dispose();
   }
 
-  void createStudent(String name, String email, String dob) async {
+  void createStudent(String name, String email, DateTime dob) async {
+    String formattedDob = DateFormat('yyyy-MM-dd').format(dob);
     Map<String, dynamic> studentData = {
       'name': name,
       'email': email,
-      'dob': dob,
+      'dob': formattedDob,
     };
 
     var headers = {
       'Content-Type': 'application/json',
     };
 
-    var response =
-        await http.post(Uri.parse(url), headers: headers, body: jsonEncode(studentData));
+    var response = await http.post(Uri.parse(url),
+        headers: headers, body: jsonEncode(studentData));
 
     if (response.statusCode == 201) {
       // Successful response
       var createdStudent = jsonDecode(response.body);
-
-      // Process the created student data
-
-      // ...
     } else {
       // Error handling
       print('Failed to create student. Error code: ${response.statusCode}');
@@ -324,9 +321,9 @@ class _CreateWidgetState extends State<CreateWidget> {
                   // Retrieve input values from text fields
                   String name = _nameController.text;
                   String email = _emailController.text;
-                  String dob = _dateOfBirthController.text;
+                  String dobString = _dateOfBirthController.text;
 
-                  // Call createStudent method to add the student to the API
+                  DateTime dob = _dateFormat.parse(dobString); // Call createStudent method to add the student to the API
                   createStudent(name, email, dob);
                 },
                 text: 'Submit Student',
