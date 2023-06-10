@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return  const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Student Info',
-      home: NavSection(),
+      home: OnboardScreen(),
     );
   }
 }

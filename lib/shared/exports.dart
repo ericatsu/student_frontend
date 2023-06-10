@@ -19,6 +19,7 @@ export 'package:student_frontend/screens/auth/signup_page.dart';
 
 export 'package:student_frontend/screens/user/all_students.dart';
 export 'package:student_frontend/screens/user/create_page.dart';
+export 'package:student_frontend/screens/user/student_count.dart';
 
 //widgets
 export 'package:student_frontend/screens/onboarding/widgets/forward_button.dart';

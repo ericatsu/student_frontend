@@ -133,12 +133,11 @@ class _SignUpPageState extends State<SignUpPage> {
                               ),
                               const SizedBox(width: 7),
                               Text(
-                                    strength.toString().split('.').last,
-                                style:  TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w500,
-                                  color: _getProgressColor(strength)
-                                ),
+                                strength.toString().split('.').last,
+                                style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w500,
+                                    color: _getProgressColor(strength)),
                               ),
                             ],
                           ),
@@ -151,13 +150,13 @@ class _SignUpPageState extends State<SignUpPage> {
                       onChanged: _checkPasswordStrength,
                     ),
                     SizedBox(height: height * 0.022),
-                    //Submit 
+                    //Submit
                     SubmitButtom(
                       backgroundColor: Palette.secondary,
                       bheight: 0.075,
                       bwidth: 0.92,
                       onPressed: () {
-                        //Get.to(const HomePage());
+                        Get.to(const NavSection());
                       },
                       text: 'Sign Up',
                       textColor: Palette.white,
@@ -183,7 +182,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                         const SizedBox(width: 10),
                         OtherButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(const NavSection());
+                          },
                           ibheight: 0.080,
                           ibwidth: 0.35,
                           imagetext: Images.apple,

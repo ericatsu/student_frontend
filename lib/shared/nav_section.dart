@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:student_frontend/screens/user/student_count.dart';
 import 'package:student_frontend/shared/exports.dart';
 
 class NavSection extends StatefulWidget {
