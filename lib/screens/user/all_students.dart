@@ -39,6 +39,27 @@ class _AllStudentsState extends State<AllStudents> {
     }
   }
 
+  void deleteStudent(int studentId) async {
+    String apiUrl =
+        'https://studentapi-production.up.railway.app/api/v1/student/$studentId';
+
+    try {
+      final response = await http.delete(Uri.parse(apiUrl));
+
+      if (response.statusCode == 200) {
+        // Success! Handle the deleted student information
+        // Fetch the updated list of students
+        fetchStudents();
+      } else {
+        // Error handling
+        print('Failed to delete student. Status code: ${response.statusCode}');
+      }
+    } catch (error) {
+      // Error handling
+      print('Failed to delete student. Error: $error');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
@@ -99,6 +120,33 @@ class _AllStudentsState extends State<AllStudents> {
                                 email: student.email,
                                 age: student.age,
                               ),);
+                        }, 
+                        onLongPressDelete: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text('Delete Student'),
+                                content: const Text(
+                                    'Are you sure you want to delete this student?'),
+                                actions: [
+                                  TextButton(
+                                    child: const Text('Cancel'),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                  TextButton(
+                                    child: const Text('Delete'),
+                                    onPressed: () {
+                                      deleteStudent(student.id);
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
                         },
                       );
                     },
@@ -113,83 +161,3 @@ class _AllStudentsState extends State<AllStudents> {
   }
 }
 
-//   final List<Student> students = [
-//     Student(
-//       name: 'John Doe',
-//       email: 'johndoe@example.com',
-//       age: 20,
-//       imageUrl:
-//           'https://cdn.pixabay.com/photo/2022/01/17/22/20/subtract-6945896_960_720.png',
-//     ),
-//     Student(
-//       name: 'Jane Smith',
-//       email: 'janesmith@example.com',
-//       age: 22,
-//       imageUrl:
-//           'https://cdn.pixabay.com/photo/2022/01/17/22/20/subtract-6945896_960_720.png',
-//     ),
-//     Student(
-//       name: 'Jane Smith',
-//       email: 'janesmith@example.com',
-//       age: 22,
-//       imageUrl:
-//           'https://cdn.pixabay.com/photo/2022/01/17/22/20/subtract-6945896_960_720.png',
-//     ),
-//     Student(
-//       name: 'Jane Smith',
-//       email: 'janesmith@example.com',
-//       age: 22,
-//       imageUrl:
-//           'https://cdn.pixabay.com/photo/2022/01/17/22/20/subtract-6945896_960_720.png',
-//     ),
-//     Student(
-//       name: 'Jane Smith',
-//       email: 'janesmith@example.com',
-//       age: 22,
-//       imageUrl:
-//           'https://cdn.pixabay.com/photo/2022/01/17/22/20/subtract-6945896_960_720.png',
-//     ),
-//     Student(
-//       name: 'Jane Smith',
-//       email: 'janesmith@example.com',
-//       age: 22,
-//       imageUrl:
-//           'https://cdn.pixabay.com/photo/2022/01/17/22/20/subtract-6945896_960_720.png',
-//     ),
-//     Student(
-//       name: 'Jane Smith',
-//       email: 'janesmith@example.com',
-//       age: 22,
-//       imageUrl:
-//           'https://cdn.pixabay.com/photo/2022/01/17/22/20/subtract-6945896_960_720.png',
-//     ),
-//     Student(
-//       name: 'Jane Smith',
-//       email: 'janesmith@example.com',
-//       age: 22,
-//       imageUrl:
-//           'https://cdn.pixabay.com/photo/2022/01/17/22/20/subtract-6945896_960_720.png',
-//     ),
-//     Student(
-//       name: 'Jane Smith',
-//       email: 'janesmith@example.com',
-//       age: 22,
-//       imageUrl:
-//           'https://cdn.pixabay.com/photo/2022/01/17/22/20/subtract-6945896_960_720.png',
-//     ),
-//   ];
-// }
-
-// class Student {
-//   final String name;
-//   final String email;
-//   final int age;
-//   final String imageUrl;
-
-//   Student({
-//     required this.name,
-//     required this.email,
-//     required this.age,
-//     required this.imageUrl,
-//   });
-// }

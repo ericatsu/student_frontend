@@ -5,15 +5,17 @@ class ProfileCard extends StatelessWidget {
   final String email;
   final int age;
   final String imageUrl;
-  
   final VoidCallback ontap;
+  final VoidCallback onLongPressDelete;
 
   const ProfileCard({
     required this.name,
     required this.email,
     required this.age,
     required this.imageUrl,
-    Key? key, required this.ontap,
+    Key? key,
+    required this.ontap,
+    required this.onLongPressDelete,
   }) : super(key: key);
 
   @override
@@ -21,6 +23,7 @@ class ProfileCard extends StatelessWidget {
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return GestureDetector(
+      onLongPress: onLongPressDelete,
       onTap: ontap,
       child: Padding(
         padding: const EdgeInsets.all(4.0),
