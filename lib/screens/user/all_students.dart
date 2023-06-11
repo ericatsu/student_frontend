@@ -14,8 +14,7 @@ class AllStudents extends StatefulWidget {
 
 class _AllStudentsState extends State<AllStudents> {
   final TextEditingController searchController = TextEditingController();
-
-   List<Student> students = []; // Update the Student class according to your data structure
+   List<Student> students = [];
 
   @override
   void initState() {
@@ -61,6 +60,7 @@ class _AllStudentsState extends State<AllStudents> {
       print('Failed to delete student. Error: $error');
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
