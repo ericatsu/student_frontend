@@ -30,7 +30,6 @@ class _AllStudentsState extends State<AllStudents> {
     var response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
-      // Successful response
       List<dynamic> studentsData = jsonDecode(response.body);
 
       students = studentsData.map((json) => Student.fromJson(json)).toList();
