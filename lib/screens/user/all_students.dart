@@ -3,6 +3,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:student_frontend/shared/exports.dart';
 
 class AllStudents extends StatefulWidget {
@@ -14,7 +15,8 @@ class AllStudents extends StatefulWidget {
 
 class _AllStudentsState extends State<AllStudents> {
   final TextEditingController searchController = TextEditingController();
-   List<Student> students = [];
+  List<Student> students = [];
+  bool isLoading = true;
 
   @override
   void initState() {
@@ -22,7 +24,7 @@ class _AllStudentsState extends State<AllStudents> {
     fetchStudents(); // Fetch the students when the widget initializes
   }
 
- void fetchStudents() async {
+  Future<void> fetchStudents() async {
     String url = 'https://studentapi-production.up.railway.app/api/v1/student';
 
     var response = await http.get(Uri.parse(url));
@@ -60,7 +62,6 @@ class _AllStudentsState extends State<AllStudents> {
       print('Failed to delete student. Error: $error');
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -105,54 +106,63 @@ class _AllStudentsState extends State<AllStudents> {
                 SizedBox(
                   height: height * 0.01,
                 ),
-                SizedBox(
-                  height: height * 0.556,
-                  child: ListView.builder(
-                    itemCount: students.length,
-                    itemBuilder: (context, index) {
-                      final student = students[index];
-                      return ProfileCard(
-                        name: student.name,
-                        email: student.email,
-                        age: student.age,
-                        imageUrl: 'https://cdn.pixabay.com/photo/2022/01/17/22/20/subtract-6945896_960_720.png',
-                        ontap: () {
-                          Get.to( StudentPage(
-                                name: student.name,
-                                email: student.email,
-                                age: student.age,
-                              ),);
-                        }, 
-                        onLongPressDelete: () {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: const Text('Delete Student'),
-                                content: const Text(
-                                    'Are you sure you want to delete this student?'),
-                                actions: [
-                                  TextButton(
-                                    child: const Text('Cancel'),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
+                Expanded(
+                  child: isLoading
+                      ? ListView.builder(
+                          itemCount: 10,
+                          itemBuilder: (context, index) {
+                            return const ProfileCardShimmer();
+                          },
+                        )
+                      : ListView.builder(
+                          itemCount: students.length,
+                          itemBuilder: (context, index) {
+                            final student = students[index];
+                            return ProfileCard(
+                              name: student.name,
+                              email: student.email,
+                              age: student.age,
+                              imageUrl:
+                                  'https://cdn.pixabay.com/photo/2022/01/17/22/20/subtract-6945896_960_720.png',
+                              ontap: () {
+                                Get.to(
+                                  StudentPage(
+                                    name: student.name,
+                                    email: student.email,
+                                    age: student.age,
                                   ),
-                                  TextButton(
-                                    child: const Text('Delete'),
-                                    onPressed: () {
-                                      deleteStudent(student.id);
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        },
-                      );
-                    },
-                  ),
+                                );
+                              },
+                              onLongPressDelete: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: const Text('Delete Student'),
+                                      content: const Text(
+                                          'Are you sure you want to delete this student?'),
+                                      actions: [
+                                        TextButton(
+                                          child: const Text('Cancel'),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                        TextButton(
+                                          child: const Text('Delete'),
+                                          onPressed: () {
+                                            deleteStudent(student.id);
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
+                            );
+                          },
+                        ),
                 ),
               ],
             ),
@@ -163,3 +173,64 @@ class _AllStudentsState extends State<AllStudents> {
   }
 }
 
+class ProfileCardShimmer extends StatelessWidget {
+  const ProfileCardShimmer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Card(
+        elevation: 2,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Shimmer.fromColors(
+          baseColor: Colors.grey[300]!,
+          highlightColor: Colors.grey[100]!,
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: height * 0.08,
+                  width: width * 0.14,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                SizedBox(width: width * 0.04),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: 100,
+                      height: 15,
+                      color: Colors.grey[300],
+                    ),
+                    SizedBox(height: height * 0.01),
+                    Container(
+                      width: 150,
+                      height: 15,
+                      color: Colors.grey[300],
+                    ),
+                    SizedBox(height: height * 0.01),
+                    Container(
+                      width: 80,
+                      height: 15,
+                      color: Colors.grey[300],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
