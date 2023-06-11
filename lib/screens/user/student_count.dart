@@ -32,25 +32,26 @@ class _StudentCountState extends State<StudentCount> {
     }
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // ...
-
     return Scaffold(
       body: Stack(
         children: [
-          // ...
-
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // ...
 
-                  StudentCountWidget(studentCount: studentCount),
+                  Center(child: StudentCountWidget(studentCount: studentCount)),
 
                   // ...
                 ],
@@ -99,4 +100,3 @@ class StudentCountWidget extends StatelessWidget {
     );
   }
 }
-

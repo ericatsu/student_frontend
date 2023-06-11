@@ -21,7 +21,7 @@ class _AllStudentsState extends State<AllStudents> {
   @override
   void initState() {
     super.initState();
-    fetchStudents(); // Fetch the students when the widget initializes
+    fetchStudents(); 
   }
 
   Future<void> fetchStudents() async {
@@ -34,11 +34,13 @@ class _AllStudentsState extends State<AllStudents> {
 
       students = studentsData.map((json) => Student.fromJson(json)).toList();
 
-      setState(() {}); // Trigger a rebuild after updating the students list
     } else {
-      // Error handling
       print('Failed to fetch students. Error code: ${response.statusCode}');
     }
+
+    setState(() {
+      isLoading = false;
+    });
   }
 
   void deleteStudent(int studentId) async {
@@ -49,15 +51,12 @@ class _AllStudentsState extends State<AllStudents> {
       final response = await http.delete(Uri.parse(apiUrl));
 
       if (response.statusCode == 200) {
-        // Success! Handle the deleted student information
-        // Fetch the updated list of students
+        
         fetchStudents();
       } else {
-        // Error handling
         print('Failed to delete student. Status code: ${response.statusCode}');
       }
     } catch (error) {
-      // Error handling
       print('Failed to delete student. Error: $error');
     }
   }
@@ -112,7 +111,11 @@ class _AllStudentsState extends State<AllStudents> {
                           itemBuilder: (context, index) {
                             return const ProfileCardShimmer();
                           },
-                        )
+                        ) : students.isEmpty
+                            ? NetworkErrorWidget(
+                                onRetry: fetchStudents,
+                              )
+                            
                       : ListView.builder(
                           itemCount: students.length,
                           itemBuilder: (context, index) {
@@ -171,6 +174,53 @@ class _AllStudentsState extends State<AllStudents> {
     );
   }
 }
+
+class NetworkErrorWidget extends StatelessWidget {
+  final Future<void> Function() onRetry;
+
+  const NetworkErrorWidget({
+    required this.onRetry,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      alignment: Alignment.center,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(
+            Icons.error_outline,
+            size: 48,
+            color: Colors.red,
+          ),
+          const SizedBox(height: 16),
+          const Text(
+            'Failed to fetch students',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 8),
+          const Text(
+            'Please check your internet connection and try again.',
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: onRetry,
+            child: const Text('Retry'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 
 class ProfileCardShimmer extends StatelessWidget {
   const ProfileCardShimmer({super.key});
