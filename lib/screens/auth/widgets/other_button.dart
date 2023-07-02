@@ -16,7 +16,10 @@ class OtherButton extends StatelessWidget {
       required this.ibwidth,
       required this.ibheight,
       required this.onPressed,
-      required this.text, required icon, required this.iheight, required this.iwidth});
+      required this.text,
+      required icon,
+      required this.iheight,
+      required this.iwidth});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +41,11 @@ class OtherButton extends StatelessWidget {
             height: iheight,
             width: iwidth,
           ),
-          label: Text(text, style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w500, color: textColor),),
+          label: Text(
+            text,
+            style: TextStyle(
+                fontSize: 13.5, fontWeight: FontWeight.w500, color: textColor),
+          ),
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.transparent,
             elevation: 0,
