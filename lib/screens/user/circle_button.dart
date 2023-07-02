@@ -37,16 +37,19 @@ class _CircularButtonState extends State<CircularButton> {
                 height: 150,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(color: Colors.grey, width: 2.5),
+                  border: Border.all(
+                      color:
+                          pressCount == 3 ? Colors.orange : Colors.grey,
+                      width: 2.5),
                 ),
               ),
               Center(
                 child: Container(
                   width: 71.60,
                   height: 71.60,
-                  decoration:  BoxDecoration(
+                  decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: pressCount == 3 ? Colors.orange : Colors.transparent,
+                    color: Colors.orange 
                   ),
                   child: const Icon(
                     CupertinoIcons.forward,
