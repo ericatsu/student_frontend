@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:student_frontend/screens/user/circle_button.dart';
 import 'package:student_frontend/shared/exports.dart';
 
 class NavSection extends StatefulWidget {
@@ -17,7 +16,6 @@ class _NavSectionState extends State<NavSection> {
     const AllStudents(),
     const CreatePage(),
     const StudentCount(),
-     CircularButton()
   ];
   
 
@@ -58,7 +56,6 @@ class _NavSectionState extends State<NavSection> {
                     navIcon(CupertinoIcons.group, 0),
                     navIcon(CupertinoIcons.add_circled, 1),
                     navIcon(CupertinoIcons.square_on_circle, 2),
-                    navIcon(CupertinoIcons.train_style_one, 3),
                   ],
                 ),
               ),
